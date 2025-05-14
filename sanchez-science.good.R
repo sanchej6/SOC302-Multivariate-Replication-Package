@@ -1,3 +1,8 @@
+####################################################################################
+############              Pre-Analysis: settings, packages, and data    ############
+####################################################################################
+
+
 ### Settings + Packages
 library(dplyr)
 #install.packages("dplyr")
@@ -165,16 +170,21 @@ cor(my_dataset)
 ####################################################################################
 
 # model1a: religious beliefs; comparing scientgo & attend
-model1a <- glm(agree ~ always+ sometimes, data = my_dataset, family = binomial)
+model1a <- glm(agree ~ always + sometimes, data = my_dataset, family = binomial)
 summary(model1a)
 pR2(model1a)
 
-#model2a: sociopolitical background; comparing scientgo & degree + partyid
+#model2a: sociodemographic background; comparing scientgo & degree + partyid
 model2a <-glm(agree ~ no_hs + assoc + college_grad + republican + independent + other, data = my_dataset, family = binomial)
 summary(model2a)
 pR2(model2a)
 
-#model3a: trust in medicine and health; comparing scientgo & consci + doctrst
+#model3a: trust in healthcare; comparing scientgo & consci + doctrst
 model3a <-glm(agree ~ only_some + hardly_any + neither_agree_or_disagree + docdisagree, data = my_dataset, family = binomial)
 summary(model3a)
 pR2(model3a)
+
+#model4a: all; comparing scientgo & all other variables
+model4a <-glm(agree ~ always + sometimes + no_hs + assoc + college_grad + republican + independent + other + only_some + hardly_any + neither_agree_or_disagree + docdisagree, data = my_dataset, family = binomial)
+summary (model4a)
+pR2(model4a)
